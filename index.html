@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homeland Defense Institute | NORAD &amp; USNORTHCOM J7</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
+            color: #334155;
+            background-color: #ffffff;
+            line-height: 1.6;
+        }
+
+        .top-stripe {
+            background-color: #050d1a;
+            color: #94a3b8;
+            font-size: 12px;
+            padding: 7px 32px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        header.nav-header {
+            background-color: #0a192f;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            border-bottom: 2px solid #c5a059;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 32px;
+        }
+
+        .brand-block h1 {
+            font-family: Georgia, 'Times New Roman', serif;
+            color: #ffffff;
+            font-size: 21px;
+            font-weight: 700;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+        }
+
+        .brand-block span {
+            color: #c5a059;
+            font-size: 12px;
+            font-weight: 500;
+            display: block;
+            letter-spacing: 0.5px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 28px;
+        }
+
+        nav a {
+            color: #cbd5e1;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        nav a:hover {
+            color: #c5a059;
+        }
+
+        .hero {
+            background: radial-gradient(circle at top, #1e3a5f 0%, #0a192f 75%, #050d1a 100%);
+            color: #f8fafc;
+            text-align: center;
+            padding: 64px 32px;
+            border-bottom: 1px solid #1e293b;
+        }
+
+        .hero-inner {
+            max-width: 850px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .hero-logo {
+            max-height: 140px;
+            width: auto;
+            margin-bottom: 24px;
+            border-radius: 6px;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.4);
+            border: 1px solid rgba(197, 160, 89, 0.4);
+        }
+
+        .hero h2 {
+            font-family: Georgia, 'Times New Roman', serif;
+            font-size: 38px;
+            font-weight: 700;
+            line-height: 1.25;
+            margin-bottom: 16px;
+            letter-spacing: 0.5px;
+        }
+
+        .hero p {
+            font-size: 17px;
+            color: #cbd5e1;
+            max-width: 780px;
+        }
+
+        .content-wrap {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 56px 32px;
+        }
+
+        .section-header {
+            margin-bottom: 32px;
+            border-left: 4px solid #c5a059;
+            padding-left: 16px;
+        }
+
+        .section-header h3 {
+            font-family: Georgia, 'Times New Roman', serif;
+            font-size: 28px;
+            color: #0a192f;
+            margin-bottom: 6px;
+        }
+
+        .section-header p {
+            color: #64748b;
+            font-size: 16px;
+        }
+
+        .focus-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+            gap: 28px;
+            margin-bottom: 64px;
+        }
+
+        .focus-card {
+            background-color: #f8fafc;
+            padding: 28px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+            border-top: 4px solid #0a192f;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.04);
+            transition: transform 0.2s, border-top-color 0.2s;
+        }
+
+        .focus-card:hover {
+            transform: translateY(-4px);
+            border-top-color: #c5a059;
+        }
+
+        .focus-card h4 {
+            color: #0a192f;
+            font-size: 19px;
+            margin-bottom: 12px;
+        }
+
+        .focus-card p {
+            font-size: 15px;
+            color: #475569;
+        }
+
+        .library-section {
+            background-color: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 36px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.04);
+            margin-bottom: 64px;
+        }
+
+        .filter-bar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 28px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .search-input {
+            flex: 1;
+            min-width: 260px;
+            padding: 11px 16px;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            font-size: 15px;
+            outline: none;
+        }
+
+        .search-input:focus {
+            border-color: #0a192f;
+        }
+
+        .filter-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .filter-btn {
+            background-color: #f1f5f9;
+            border: 1px solid #cbd5e1;
+            padding: 8px 15px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            color: #334155;
+            transition: all 0.2s;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background-color: #0a192f;
+            color: #ffffff;
+            border-color: #0a192f;
+        }
+
+        .research-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+            gap: 24px;
+        }
+
+        .pub-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: box-shadow 0.2s, border-color 0.2s;
+        }
+
+        .pub-card:hover {
+            box-shadow: 0 8px 18px rgba(0,0,0,0.08);
+            border-color: #cbd5e1;
+        }
+
+        .tag-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .pub-tag {
+            background-color: #e0f2fe;
+            color: #0369a1;
+            font-size: 12px;
+            font-weight: 600;
+            padding: 4px 10px;
+            border-radius: 4px;
+        }
+
+        .pub-date {
+            font-size: 12px;
+            color: #64748b;
+            font-weight: 500;
+        }
+
+        .pub-card h5 {
+            font-size: 18px;
+            color: #0a192f;
+            margin-bottom: 8px;
+            line-height: 1.35;
+        }
+
+        .pub-card .author {
+            font-size: 13px;
+            font-weight: 600;
+            color: #b48a3e;
+            margin-bottom: 12px;
+        }
+
+        .pub-card .abstract-preview {
+            font-size: 14px;
+            color: #475569;
+            margin-bottom: 20px;
+        }
+
+        .card-actions {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            border-top: 1px solid #f1f5f9;
+            padding-top: 16px;
+        }
+
+        .btn-view {
+            background-color: #0a192f;
+            color: #ffffff;
+            padding: 8px 14px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-view:hover {
+            background-color: #1e3a5f;
+        }
+
+        .btn-pdf {
+            border: 1px solid #0a192f;
+            color: #0a192f;
+            padding: 7px 14px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            transition: background-color 0.2s;
+        }
+
+        .btn-pdf:hover {
+            background-color: #f1f5f9;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(10, 25, 47, 0.78);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            padding: 24px;
+        }
+
+        .modal-content {
+            background-color: #ffffff;
+            max-width: 650px;
+            width: 100%;
+            border-radius: 8px;
+            padding: 32px;
+            position: relative;
+            max-height: 85vh;
+            overflow-y: auto;
+            border-top: 5px solid #c5a059;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 14px;
+            right: 20px;
+            font-size: 26px;
+            cursor: pointer;
+            color: #64748b;
+            background: none;
+            border: none;
+        }
+
+        .events-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 16px;
+        }
+
+        .events-table th, .events-table td {
+            padding: 16px;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .events-table th {
+            background-color: #0a192f;
+            color: #ffffff;
+            font-size: 13px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .events-table tr:hover {
+            background-color: #f8fafc;
+        }
+
+        footer {
+            background-color: #0a192f;
+            color: #cbd5e1;
+            padding: 48px 32px 32px 32px;
+            border-top: 3px solid #c5a059;
+            font-size: 14px;
+        }
+
+        .footer-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 48px;
+            margin-bottom: 32px;
+        }
+
+        .disclaimer-box {
+            background-color: rgba(255, 255, 255, 0.05);
+            padding: 18px;
+            border-left: 3px solid #c5a059;
+            border-radius: 4px;
+            font-size: 13px;
+            line-height: 1.5;
+            color: #94a3b8;
+        }
+
+        .bottom-bar {
+            text-align: center;
+            padding-top: 24px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 12px;
+            color: #64748b;
+        }
+
+        @media (max-width: 768px) {
+            .footer-inner { grid-template-columns: 1fr; }
+            nav ul { display: none; }
+            .hero h2 { font-size: 28px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-stripe">
+        <span>NORAD &amp; USNORTHCOM J7 Academic Collaboration</span>
+        <span>USAFA Academic Partner &bull; Unclassified Clearinghouse</span>
+    </div>
+
+    <header class="nav-header">
+        <div class="nav-container">
+            <div class="brand-block">
+                <h1>Homeland Defense Institute</h1>
+                <span>Advancing Bi-National Resiliency &amp; Mission Assurance</span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#focus">Focus Areas</a></li>
+                    <li><a href="#research">Research &amp; HDAS</a></li>
+                    <li><a href="#events">Symposia</a></li>
+                    <li><a href="#governance">Contact / PA</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-inner">
+            <img src="hdilogo.jpg" alt="Homeland Defense Institute Logo" class="hero-logo" onerror="this.style.display='none'">
+            <h2>Fostering Innovation in Homeland Defense</h2>
+            <p>The Homeland Defense Institute (HDI) convenes military leaders, academic scholars, and commercial operators to analyze contested logistics, critical infrastructure protection, and societal continuity across North America and the High North.</p>
+        </div>
+    </section>
+
+    <div class="content-wrap">
+
+        <section id="about" style="margin-bottom: 64px;">
+            <div class="section-header">
+                <h3>Who We Are</h3>
+                <p>Connecting academia, defense practitioners, and industry to address strategic challenges.</p>
+            </div>
+            <p>The Homeland Defense Institute (HDI) serves as a critical academic and research bridge, connecting defense professionals, academics, and industry experts to address complex national security and homeland defense challenges. As an entity aligned with the U.S. Air Force Academy (USAFA) and the NORAD/USNORTHCOM J7, we foster the intellectual capital required to defend the homeland in an increasingly contested strategic environment.</p>
+        </section>
+
+        <div class="section-header" id="focus">
+            <h3>Lines of Effort &amp; Research Portfolios</h3>
+            <p>Core focus areas supporting NORAD and USNORTHCOM mission assurance requirements.</p>
+        </div>
+        <div class="focus-grid">
+            <div class="focus-card">
+                <h4>Arctic &amp; High North</h4>
+                <p>Examining extreme cold-weather operations, dual-theater contested logistics, deep-water port availability, and rapid multi-modal supply degradation across the high latitudes.</p>
+            </div>
+            <div class="focus-card">
+                <h4>Critical Lifeline Infrastructure</h4>
+                <p>Analyzing cross-sector failure cascades across commercial maritime shipping, electrical power, refined fuels, communications, and acute supply chains sustaining North American defense.</p>
+            </div>
+            <div class="focus-card">
+                <h4>Counter-sUAS &amp; Gray Zone Wargaming</h4>
+                <p>Stress-testing interagency decision frameworks, subsea infrastructure vulnerabilities, multi-domain autonomous probes, and ambiguous attribution dynamics in multinational coalitions.</p>
+            </div>
+        </div>
+
+        <div class="library-section" id="research">
+            <div class="section-header">
+                <h3>Homeland Defense Awareness Symposium (HDAS) Research</h3>
+                <p>Search and review annual HDAS proceedings, technical papers, and strategic monographs cleared for public release.</p>
+            </div>
+
+            <div class="filter-bar">
+                <input type="text" id="searchInput" class="search-input" onkeyup="filterCards()" placeholder="Search research titles, authors, or topics...">
+                <div class="filter-buttons">
+                    <button class="filter-btn active" onclick="setCategory('all', this)">All</button>
+                    <button class="filter-btn" onclick="setCategory('Arctic', this)">Arctic &amp; North</button>
+                    <button class="filter-btn" onclick="setCategory('Infrastructure', this)">Infrastructure &amp; Lifelines</button>
+                    <button class="filter-btn" onclick="setCategory('Wargaming', this)">Wargames &amp; C-UAS</button>
+                    <button class="filter-btn" onclick="setCategory('Human Systems', this)">Human Systems</button>
+                </div>
+            </div>
+
+            <div class="research-grid" id="researchGrid">
+
+                <div class="pub-card" data-category="Infrastructure">
+                    <div>
+                        <div class="tag-row">
+                            <span class="pub-tag">Lifeline Infrastructure</span>
+                            <span class="pub-date">May 2026</span>
+                        </div>
+                        <h5>Private-Sector Lifelines in the Arctic: Predicting and Assessing Risk to Critical Infrastructure</h5>
+                        <div class="author">Julie Kay Roberts, CEM (PSEMA / HDI Project 1)</div>
+                        <div class="abstract-preview">Analyzes privately operated physical lifeline networks (commercial fuels, energy, food distribution, communications, and multi-modal transport) supporting Arctic homeland defense under contested conditions.</div>
+                    </div>
+                    <div class="card-actions">
+                        <button class="btn-view" onclick="showDetails(this)">Details &amp; Abstract</button>
+                        <a href="documents/Private-Sector Lifelines in the Arctic (Predicting and Assessing Risk to Critical Infrastructure).pdf" class="btn-pdf" target="_blank">Download PDF</a>
+                    </div>
+                </div>
+
+                <div class="pub-card" data-category="Human Systems">
+                    <div>
+                        <div class="tag-row">
+                            <span class="pub-tag">Human Systems</span>
+                            <span class="pub-date">May 2026</span>
+                        </div>
+                        <h5>Continuity of Society in the North: Multi-Modal Resiliency in Arctic Defense</h5>
+                        <div class="author">Julie Kay Roberts, CEM (PSEMA / HDI Project 2)</div>
+                        <div class="abstract-preview">Examines human systems as operational variables in mission assurance, including military families, civilian/contractor workforces, and tribal/Alaska Native community resilience.</div>
+                    </div>
+                    <div class="card-actions">
+                        <button class="btn-view" onclick="showDetails(this)">Details &amp; Abstract</button>
+                        <a href="documents/Continuity of Society in the North (Multi-Modal Resiliency in Arctic Defense).pdf" class="btn-pdf" target="_blank">Download PDF</a>
+                    </div>
+                </div>
+
+                <div class="pub-card" data-category="Wargaming">
+                    <div>
+                        <div class="tag-row">
+                            <span class="pub-tag">Wargaming &amp; Resilience</span>
+                            <span class="pub-date">May 2026</span>
+                        </div>
+                        <h5>Resilience in the Arctic: Interagency Wargaming to Test Mission Continuity and Domain Awareness</h5>
+                        <div class="author">Meghan Iverson (HDI Nonresident Fellow / Univ of Chicago)</div>
+                        <div class="abstract-preview">Evaluates an interagency stress-test wargame simulating compound environmental and contested operational conditions in Alaska, uncovering critical maritime and power chokepoints.</div>
+                    </div>
+                    <div class="card-actions">
+                        <button class="btn-view" onclick="showDetails(this)">Details &amp; Abstract</button>
+                        <a href="documents/Resilience in the Arctic (Interagency Wargaming to Test Mission Continuity and Domain Awareness).pdf" class="btn-pdf" target="_blank">Download PDF</a>
+                    </div>
+                </div>
+
+                <div class="pub-card" data-category="Wargaming">
+                    <div>
+                        <div class="tag-row">
+                            <span class="pub-tag">C-sUAS &amp; Gray Zone</span>
+                            <span class="pub-date">February 2026</span>
+                        </div>
+                        <h5>Polar Frontlines: Full Report and Cadet Handbook</h5>
+                        <div class="author">Homeland Defense Institute Research Consortium (Cornell)</div>
+                        <div class="abstract-preview">Investigates full-spectrum drone threats and gray-zone infrastructure probes against Arctic critical facilities, providing a 72-hour operational simulation package for PME and cadet training.</div>
+                    </div>
+                    <div class="card-actions">
+                        <button class="btn-view" onclick="showDetails(this)">Details &amp; Abstract</button>
+                        <a href="documents/Polar Frontlines (Final report and Handbook).pdf" class="btn-pdf" target="_blank">Download PDF</a>
+                    </div>
+                </div>
+
+                <div class="pub-card" data-category="Arctic">
+                    <div>
+                        <div class="tag-row">
+                            <span class="pub-tag">Arctic Domain</span>
+                            <span class="pub-date">May 2026</span>
+                        </div>
+                        <h5>Bridging Arctic Gaps Final Report</h5>
+                        <div class="author">DMATS Task Deliverable (DEL 34 TDL 3-071)</div>
+                        <div class="abstract-preview">Assesses cross-border coordination architecture gaps, communications fragility above 70 degrees North, and logistics constraints affecting bi-national Arctic mission assurance.</div>
+                    </div>
+                    <div class="card-actions">
+                        <button class="btn-view" onclick="showDetails(this)">Details &amp; Abstract</button>
+                        <a href="documents/Bridging Arctic Gaps Final Report.pdf" class="btn-pdf" target="_blank">Download PDF</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="section-header" id="events">
+            <h3>Strategic Education &amp; Events Calendar</h3>
+            <p>HDI engagements across academic institutions, military commands, and interagency partners.</p>
+        </div>
+        <table class="events-table">
+            <thead>
+                <tr>
+                    <th>Event / Engagement</th>
+                    <th>Focus &amp; Theme</th>
+                    <th>Partner / Lead</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Homeland Defense Awareness Symposium (HDAS 2026)</strong></td>
+                    <td>Arctic Operations, Contested Logistics &amp; Mission Continuity</td>
+                    <td>HDI Lead (USAFA / USNORTHCOM)</td>
+                </tr>
+                <tr>
+                    <td><strong>Anchorage Security &amp; Defense Conference (ASDC)</strong></td>
+                    <td>Arctic Operational Readiness &amp; Infrastructure Risk</td>
+                    <td>Ted Stevens Center (HDI Panel)</td>
+                </tr>
+                <tr>
+                    <td><strong>Kingston Consortium on International Security</strong></td>
+                    <td>Strengthening Maritime &amp; Continental Approaches</td>
+                    <td>Kingston Consortium (HDI Presenter)</td>
+                </tr>
+                <tr>
+                    <td><strong>VISTA GLADIATOR Wargame (VGWG)</strong></td>
+                    <td>Logistics in Contested Operating Environments</td>
+                    <td>USNORTHCOM J7 / HDI SMEs</td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+    <div class="modal" id="paperModal" onclick="if(event.target===this)closeModal()">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeModal()">&times;</button>
+            <div id="modalBody"></div>
+        </div>
+    </div>
+
+    <footer id="governance">
+        <div class="footer-inner">
+            <div>
+                <h4 style="color:#ffffff; margin-bottom: 12px; font-family: Georgia, serif; font-size: 18px;">Homeland Defense Institute (HDI)</h4>
+                <p style="margin-bottom: 16px; color: #94a3b8;">Supporting the research and strategic education mission of NORAD and USNORTHCOM J7 in partnership with the United States Air Force Academy (USAFA).</p>
+                <div class="disclaimer-box">
+                    <strong>PUBLIC AFFAIRS CLEARANCE NOTICE:</strong> All papers, briefings, and reports made available on this public website have been reviewed and approved for public release by the appropriate Public Affairs (PA) security authorities. The analyses, findings, and conclusions expressed herein represent solely the academic work of the authors and do not necessarily reflect the official policy or position of USAFA, NORAD, USNORTHCOM, the Department of War, or the United States and Canadian Governments.
+                </div>
+            </div>
+            <div>
+                <h4 style="color:#ffffff; margin-bottom: 12px; font-family: Georgia, serif; font-size: 18px;">Contact &amp; Submissions</h4>
+                <p style="color: #94a3b8; margin-bottom: 8px;">Homeland Defense Institute</p>
+                <p style="color: #94a3b8; margin-bottom: 8px;">United States Air Force Academy, CO</p>
+                <p style="color: #c5a059; margin-bottom: 16px; font-weight: 600;">Annual HDAS Research Submissions</p>
+                <p style="font-size: 13px; color: #64748b;">For inquiries regarding the HDI Fellows Program or academic partnerships, contact your institutional HDI liaison.</p>
+            </div>
+        </div>
+        <div class="bottom-bar">
+            &copy; 2026 Homeland Defense Institute. Hosted via GitHub Pages.
+        </div>
+    </footer>
+
+    <script>
+        var activeCategory = 'all';
+
+        function setCategory(cat, btnElement) {
+            activeCategory = cat;
+            var buttons = document.querySelectorAll('.filter-btn');
+            for (var i = 0; i < buttons.length; i++) {
+                buttons[i].classList.remove('active');
+            }
+            btnElement.classList.add('active');
+            filterCards();
+        }
+
+        function filterCards() {
+            var query = document.getElementById('searchInput').value.toLowerCase();
+            var cards = document.querySelectorAll('.pub-card');
+            for (var i = 0; i < cards.length; i++) {
+                var card = cards[i];
+                var cat = card.getAttribute('data-category');
+                var text = card.innerText.toLowerCase();
+                var matchesCat = (activeCategory === 'all' || cat === activeCategory);
+                var matchesQuery = (text.indexOf(query) !== -1);
+                card.style.display = (matchesCat && matchesQuery) ? 'flex' : 'none';
+            }
+        }
+
+        function showDetails(btn) {
+            var card = btn.closest('.pub-card');
+            var tag = card.querySelector('.pub-tag').innerText;
+            var date = card.querySelector('.pub-date').innerText;
+            var title = card.querySelector('h5').innerText;
+            var author = card.querySelector('.author').innerText;
+            var abstractText = card.querySelector('.abstract-preview').innerText;
+            var pdfLink = card.querySelector('.btn-pdf').getAttribute('href');
+
+            document.getElementById('modalBody').innerHTML =
+                '<span class="pub-tag" style="display:inline-block; margin-bottom:10px;">' + tag + '</span>' +
+                '<h3 style="color:#0a192f; font-family:Georgia,serif; margin-bottom:8px;">' + title + '</h3>' +
+                '<p style="color:#b48a3e; font-weight:600; font-size:14px; margin-bottom:16px;">' + author + ' &bull; ' + date + '</p>' +
+                '<h5 style="color:#0a192f; margin-bottom:6px; font-size:15px;">Executive Summary / Abstract</h5>' +
+                '<p style="color:#475569; font-size:15px; margin-bottom:20px;">' + abstractText + '</p>' +
+                '<div style="background:#f8fafc; padding:12px; border-left:3px solid #c5a059; font-size:13px; margin-bottom:20px;">' +
+                '<strong>PA Clearance:</strong> Approved for public release and academic distribution.</div>' +
+                '<div style="text-align:right;">' +
+                '<a href="' + pdfLink + '" target="_blank" class="btn-view" style="text-decoration:none; display:inline-block;">Open Full PDF</a>' +
+                '</div>';
+
+            document.getElementById('paperModal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('paperModal').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
